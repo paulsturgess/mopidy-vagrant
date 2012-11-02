@@ -111,7 +111,7 @@ end
 #### SYSTEM AUDIO SETUP ####
 
 execute "Install alsamixer" do
-  command "sudo apt-get install alsa-utils"
+  command "sudo apt-get install alsa-utils -y -q"
   action :run
 end
 
