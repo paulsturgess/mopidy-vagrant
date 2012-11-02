@@ -13,7 +13,7 @@ Get yourself a copy of [Vagrant](http://vagrantup.com)
 ## Install the VM ##
 
     $ git clone git@github.com:paulsturgess/mopidy-vagrant.git
-    $ cd mopid-vagrant
+    $ cd mopidy-vagrant
     $ vagrant up
 
 The first time the box is installed will take a while as a copy of the Ubuntu VM will need to be downloaded.
