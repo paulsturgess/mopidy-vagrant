@@ -11,10 +11,10 @@ end
 include_recipe "python"
 
 execute "Setup Mopidy APT archive" do
-  command <<-EOH
+  command <<-EOS
     wget -q -O - http://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
     sudo wget -q -O /etc/apt/sources.list.d/mopidy.list http://apt.mopidy.com/mopidy.list
-  EOH
+  EOS
   action :run
 end
 
@@ -43,13 +43,13 @@ end
 #### MOPIDY SPOTIFY DEPENDENCIES ####
 
 bash "Install libspotify" do
-  code <<-EOH
+  code <<-EOS
     wget https://developer.spotify.com/download/libspotify/libspotify-12.1.51-Linux-i686-release.tar.gz
     tar zxfv libspotify-12.1.51-Linux-i686-release.tar.gz
     cd libspotify-12.1.51-Linux-i686-release
     sudo make install prefix=/usr/local
     sudo ldconfig
-  EOH
+  EOS
   action :run
 end
 
@@ -110,12 +110,21 @@ end
 
 #### SYSTEM AUDIO SETUP ####
 
-execute "Install alsamixer" do
-  command "sudo apt-get install alsa-utils -y -q"
+execute "Install alsa and alsamixer" do
+  command "sudo apt-get install alsa alsa-utils -y -q"
   action :run
 end
 
 execute "Add system user to audio group" do
   command "sudo adduser #{system_username} audio"
+  action :run
+end
+
+execute "Turn up the volume" do
+  command <<-EOS
+    amixer -c 0 set Master playback 100% unmute
+    amixer -c 0 set Headphone playback 100% unmute
+    amixer -c 0 set Speaker playback 100% unmute
+  EOS
   action :run
 end

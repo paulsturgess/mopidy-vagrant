@@ -1,20 +1,22 @@
 # Mopidy install using Vagrant & Chef #
 
-An Ubuntu install of the latest dev version of [Mopidy](http://www.mopidy.com).
+An Ubuntu Lucid install of the latest dev version of [Mopidy](http://www.mopidy.com).
 
-Note the version of [Libspotify](https://developer.spotify.com/technologies/libspotify/) installed is hardcoded and must be compatible with the latest version of [pyspotify](http://pyspotify.mopidy.com/en/latest/).
-
-The Libspotify version can be updated in the [Chef](http://wiki.opscode.com/display/chef/Home) recipe at `/cookbooks/recipes/default.rb`
+Handles the installation of all relevant dependencies for Mopidy.
 
 You will need to set the environment variables `SPOTIFY_USERNAME` and `SPOTIFY_PASSWORD` with your [Spotify](http://www.spotify.com/) premium credentials.
 
 ## Install Vagrant ##
 
-Download [Vagrant](http://vagrantup.com)
+Get yourself a copy of [Vagrant](http://vagrantup.com)
 
 ## Install the VM ##
 
+		$ git clone git@github.com:paulsturgess/mopidy-vagrant.git
+		$ cd mopid-vagrant
     $ vagrant up
+
+The first time the box is installed will take a while as a copy of the Ubuntu VM will need to be downloaded.
 
 ## Test your audio ##
 
@@ -25,8 +27,8 @@ You should get a sound if everything has installed correctly
 
 ## Test mopidy via mpc ##
 
-MPC is a command line mpd client
+[MPC](http://linux.die.net/man/1/mpc) is a command line [MPD](http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki) client that works with Mopidy
 
     $ mopidy &
-    $ mpc add spotify:track:4hR2PmKODnlFa5fe8iWzeo
+    $ mpc add spotify:track:1QXzQKmQiDOzGHwSXVdHTp
     $ mpc play
