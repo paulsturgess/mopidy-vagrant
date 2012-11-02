@@ -1,0 +1,8 @@
+# Mopidy upstart script
+# this script will start/stop mopidy as user <%= @mopidy_username %>
+description "start and stop mopidy process"
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [!2345]                                                           
+respawn
+exec su -s /bin/sh -c 'exec "$0" "$@"' <%= @mopidy_username %> -- mopidy > <%= @mopidy_log_path %> 2>&1
