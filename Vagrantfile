@@ -11,8 +11,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe("mopidy")
     chef.json = {
       :mopidy => {
-        :spotify_username => "INSERT_SPOTIFY_USERNAME",
-        :spotify_password => "INSERT_SPOTIFY_PASSWORD"
+        :spotify_username => ENV['SPOTIFY_USERNAME'],
+        :spotify_password => ENV['SPOTIFY_PASSWORD']
       }
     }
   end
