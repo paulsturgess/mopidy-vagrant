@@ -6,7 +6,7 @@ Note the version of [Libspotify](https://developer.spotify.com/technologies/libs
 
 The Libspotify version can be updated in the [Chef](http://wiki.opscode.com/display/chef/Home) recipe at `/cookbooks/recipes/default.rb`
 
-You will need to update `/Vagrantfile` with your [Spotify](http://www.spotify.com/) premium credentials.
+You will need to set the environment variables `SPOTIFY_USERNAME` and `SPOTIFY_PASSWORD` with your [Spotify](http://www.spotify.com/) premium credentials.
 
 ## Install Vagrant ##
 
@@ -16,26 +16,16 @@ Download [Vagrant](http://vagrantup.com)
 
     $ vagrant up
 
-## Enable audio ##
+## Test your audio ##
 
-At this point audio will not work. It needs to be enabled for the VM.
-
-With your vm running, find out its' name via:
-
-    $ VBoxManage list runningvms
-
-Copy the name of the vm and enable audio:
-
-    $ vagrant halt
-    $ VBoxManage modifyvm your_vm_name --audio coreaudio --audiocontroller hda
-
-Test your audio
-
-    $ vagrant up
     $ vagrant ssh
     $ gst-launch-0.10 audiotestsrc ! autoaudiosink
 
-Test mopidy via mpc (a command line mpd client)
+You should get a sound if everything has installed correctly
+
+## Test mopidy via mpc ##
+
+MPC is a command line mpd client
 
     $ mopidy &
     $ mpc add spotify:track:4hR2PmKODnlFa5fe8iWzeo
