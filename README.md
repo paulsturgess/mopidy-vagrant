@@ -12,8 +12,8 @@ Get yourself a copy of [Vagrant](http://vagrantup.com)
 
 ## Install the VM ##
 
-		$ git clone git@github.com:paulsturgess/mopidy-vagrant.git
-		$ cd mopid-vagrant
+    $ git clone git@github.com:paulsturgess/mopidy-vagrant.git
+    $ cd mopid-vagrant
     $ vagrant up
 
 The first time the box is installed will take a while as a copy of the Ubuntu VM will need to be downloaded.
@@ -27,7 +27,7 @@ You should get a sound if everything has installed correctly
 
 ## Test mopidy via mpc ##
 
-[MPC](http://linux.die.net/man/1/mpc) is a command line [MPD](http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki) client that works with Mopidy
+[mpc](http://linux.die.net/man/1/mpc) is a command line [mpd](http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki) client that works with Mopidy
 
     $ mopidy &
     $ mpc add spotify:track:1QXzQKmQiDOzGHwSXVdHTp
